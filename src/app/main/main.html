@@ -15,7 +15,19 @@
 
       <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel is-active" id="overview">
-        <nvd3 options="main.options" data="main.data"></nvd3>
+        <nvd3 options="main.options" data="main.nvd3Data"></nvd3>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th ng-repeat="key in main.tableData.head track by $index" class="mdl-data-table__cell--non-numeric" ng-bind="key"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="value in main.tableData.values track by $index">
+                    <td ng-repeat="key in value track by $index" class="mdl-data-table__cell--non-numeric" ng-bind="key"></td>
+                </tr>
+            </tbody>
+        </table>
           <!--<flip-card data="main.data" class="section section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp"></flip-card>-->
         </div>
         <my-extra-info class="section section--footer mdl-color--white mdl-grid"></my-extra-info>
