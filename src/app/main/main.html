@@ -1,26 +1,46 @@
-<div class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>Name &amp; Title</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
-        </div>
-        </header>
-
-        <main class="mdl-layout__content">
-            <div class="section section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                <nvd3 options="main.options" data="main.nvd3Data"></nvd3>
-            </div>
-
-            <my-table head="main.tableData.head" values="main.tableData.values"></my-table>
-            <my-extra-info class="section section--footer mdl-color--white mdl-grid"></my-extra-info>
-            <my-footer></my-footer>
-        </main>
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+  <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Stage 1</span>
+      <div class="mdl-layout-spacer"></div>
+        <button class="mdl-button mdl-js-button" ng-click="main.showTable = !main.showTable">
+            <label ng-if="main.showTable">Show chart</label><label ng-if="!main.showTable">Show table</label>
+        </button>
+        <button class="mdl-button mdl-js-button" ng-click="" ng-disabled="main.showTable">
+            <label>Export chart</label>
+        </button>
     </div>
+  </header>
+  <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+    <header class="demo-drawer-header">
+      <img src="images/user.jpg" class="demo-avatar">
+      <div class="demo-avatar-dropdown">
+        <span>ivacormor@gmail.com</span>
+      </div>
+    </header>
+    <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+        <a class="mdl-navigation__link" href="https://es.linkedin.com/in/ivancoronadomoreno">
+            <!--<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>-->
+            Linkedin
+        </a>
+        <a class="mdl-navigation__link" href="https://github.com/IvanCoronado">
+            <!--<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>-->
+            Github
+        </a>
+        <a class="mdl-navigation__link" href="http://stackoverflow.com/users/5147115/ivan-coronado">
+            <!--<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation"></i>-->
+            Stackoverflow
+        </a>
+
+      <div class="mdl-layout-spacer"></div>
+    </nav>
+  </div>
+  <main class="mdl-layout__content mdl-color--grey-100">
+    <div class="mdl-grid demo-content">
+        <my-table ng-if="main.showTable" head="main.tableData.head" values="main.tableData.values"></my-table>
+        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <nvd3 ng-if="!main.showTable" options="main.options" data="main.nvd3Data"></nvd3>
+        </div>
+    </div>
+  </main>
 </div>

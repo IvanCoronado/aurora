@@ -10,6 +10,8 @@
         var vm = this,
         format = d3.time.format("%m/%d/%Y");
 
+        vm.showTable = true;
+
         init();
 
         function init(){
