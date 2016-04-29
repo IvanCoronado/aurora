@@ -72,7 +72,7 @@
                 _.map(data, function(row){
                     _.map(series, function(serie){
                         var seriePoint = {
-                            x: moment(row.Date, "DD/MM/YYYY").add(7,'days').toDate(),
+                            x: moment(row.Date, "DD/MM/YYYY").toDate(),
                             y: _.chain(row).get(serie.key).replace(',','.').parseInt().value()
                         };
                         serie.values.push(seriePoint);

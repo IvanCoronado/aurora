@@ -11,6 +11,7 @@
         format = d3.time.format("%m/%d/%Y");
 
         vm.showTable = true;
+        vm.exportSvgAsImg = exportSvgAsImg;
 
         init();
 
@@ -35,16 +36,18 @@
                 y: function(d){ return d.y; },
                 useInteractiveGuideline: true,
                 xAxis: {
-                    axisLabel: 'Day'
+                    tickFormat: function(d){
+                        return d3.time.format('%b %d')( new Date(d));
+                    },
                 },
                 yAxis: {
-                    axisLabel: 'Consumo',
-                    tickFormat: function(d){
-                        return d3.format('.02f')(d);
-                    },
                     axisLabelDistance: -10
                 }
             }
         };
+
+        function exportSvgAsImg(){
+            saveSvgAsPng(document.getElementsByTagName("svg")[0], "diagram.png");
+        }
     }
 })();

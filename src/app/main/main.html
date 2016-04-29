@@ -6,15 +6,15 @@
         <button class="mdl-button mdl-js-button" ng-click="main.showTable = !main.showTable">
             <label ng-if="main.showTable">Show chart</label><label ng-if="!main.showTable">Show table</label>
         </button>
-        <button class="mdl-button mdl-js-button" ng-click="" ng-disabled="main.showTable">
+        <button class="mdl-button mdl-js-button" ng-click="main.exportSvgAsImg()" ng-disabled="main.showTable">
             <label>Export chart</label>
         </button>
     </div>
   </header>
   <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
     <header class="demo-drawer-header">
-      <img src="images/user.jpg" class="demo-avatar">
       <div class="demo-avatar-dropdown">
+        <img src="./assets/images/me.jpg" class="demo-avatar"> 
         <span>ivacormor@gmail.com</span>
       </div>
     </header>
@@ -41,6 +41,7 @@
         <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <nvd3 ng-if="!main.showTable" options="main.options" data="main.nvd3Data"></nvd3>
         </div>
+        <div id="svgpreview"></div>
     </div>
   </main>
 </div>
